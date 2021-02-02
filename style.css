@@ -2,3 +2,14 @@
 .centre {
     text-align: center;
 }
+
+.img_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 5vw);
+    grid-gap: 15px;
+}
+
+.img_grid_desc {
+    
+}
