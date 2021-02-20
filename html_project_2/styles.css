@@ -1,0 +1,24 @@
+body {
+    background-color: blanchedalmond;
+}
+
+hr {
+    height: 2px;
+    width: 10%;
+    border-style: none;
+    border-top: dotted 5px burlywood;
+    border-width: 10px;
+}
+
+
+#first_image {
+    width: 25%;
+    height: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+h1 {
+    color: deeppink;
+}
