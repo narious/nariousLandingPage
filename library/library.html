@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="library.css">
+</head>
+<body>
+    <h1>Library</h1>
+    <h2 id="listTitle">Add Books</h2>
+    <form name="addBook" action="">
+        <table>
+            <tr>
+                <td><label for="bookTitle">Book title:</label></td>
+                <td><input type="text" id="bookTitle" name="bookTitle" placeholder="" value="The Dark Side Of The Mind"></td>
+            </tr>
+
+            <tr>
+                <td><label for="author">Author:</label></td>
+                <td><input type="text" id="author" name="author" placeholder="" value="Kerry Daynes"></td>
+            </tr>
+            
+            <tr>
+                <td><label for="pages">Number of Pages:</label></td>
+                <td><input type="text" id="pages" name="pages" placeholder="" value="296"></td>
+            </tr>
+
+            <tr>
+                <td><label for="readStatus">has been read?</label></td>
+                <td>
+                    <label for="">Yes</label>
+                    <input type="radio" id="readStatusYes" name="readStatus" >
+                    <label for="">No</label>
+                    <input type="radio" id="readStatusNo" name="readStatus" >
+                </td>
+            </tr>
+    </table>
+    <button type="submit" id="btnsubmit" onclick="addBook()">Submit</button>
+    </form>
+    <hr>
+    <h2>Books</h2>
+    <button id="btnupdate" onclick="displayBooks()">Update</button>
+    <ol id="bookList">
+    </ol>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="library.js"></script>
+</body>
+</html>
