@@ -19,6 +19,7 @@ var num = [1,2,3,4,5]
 function addBook() {
     const bookTitle = document.getElementById("bookTitle");
     console.log("hello")
+    console.log(bookTitle)
 }
 
 
