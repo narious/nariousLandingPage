@@ -17,14 +17,38 @@ var books = [book1];
 var num = [1,2,3,4,5]
 
 function addBook() {
-    const bookTitle = document.getElementById("bookTitle");
-    console.log("hello")
-    console.log(bookTitle)
+    if  (!validateBookInput()) {
+        // Do something
+        return
+    } 
+
+    // We assume the input is consistant and due to validation step
+    const hasread = document.getElementById("readStatusYes").checked ? true : false
+    $('[name=bookTitle]').val()
+    const newbook = new Book($('[name=bookTitle]').val(), $('[name=author]').val(), $('[name=pages]').val(), hasread)
+
+    // Checks for duplicates
+    for (let index = 0; index < books.length; index++) {
+        if (books[index].title == newbook.title && books[index].author == newbook.author) {
+            return
+        }
+    }
+    books.push(newbook)
 }
 
+function validateBookInput() {
+    return true
+}
 
 function displayBooks() {
-    console.log("Hello");
+
+    // Refreshes the list by deleting the old one and creating a new one
+    const oldlist = document.getElementById("bookList")
+    var newlist = document.createElement('ol')
+    newlist.id = 'bookList'
+    oldlist.parentNode.insertBefore(newlist, oldlist)
+    newlist.nextSibling.remove()
+
     books.forEach(element => {
         const info = element.info()
         var line = document.createElement("li")
@@ -33,6 +57,10 @@ function displayBooks() {
     });
 }
 
+function closePopup() {
+    $("#popup").addClass("transparent")
+
+}
 // Jquery
 $(document).ready(function() {
     $("#listTitle").html("Add Books");

@@ -1,0 +1,20 @@
+#popup {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background-color: chocolate;
+    text-align: center;
+    top: 25%;
+    left: 25%;
+}
+
+.transparent {
+    visibility: hidden;
+}
+
+#popupx {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    background-color: cornflowerblue;
+}
