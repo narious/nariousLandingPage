@@ -75,14 +75,25 @@ function openAddBook() {
 
 function createBookElement(book) {
     var bookdiv = $("<div></div>").addClass("book")
+    var bookleft = $("<div></div>").addClass("column left")
+    var bookright = $("<div></div>").addClass("column right")
     var title = $("<p></p>").text(`${book.title}`).addClass("bookDetails bkTitleDisplay")
-    var author = $("<p></p>").text(` by ${book.author}.`).addClass("bookDetails bkAuthDisplay")
+    var author = $("<p></p>").text(` by ${book.author}`).addClass("bookDetails bkAuthDisplay")
     var pages = $("<p></p>").text(`pages: ${book.pages}`).addClass("bookDetails bkPageDisplay")
     var label = $("<label></label>").text("read?").addClass("bookHasRead")
-    var label = $("<input></input>").addClass("bookHasRead")
+    var input = $("<input></input>").addClass("bookHasRead")
+    $(input).attr("type", "checkbox");
 
-    bookdiv.append(title).append(author).append(pages).append(label).append(label)
+    const s = Math.floor(Math.random() * varbookColors.length)
+    bookcolor = varbookColors[s]
+
+    bookdiv.attr("style", `background-color:${bookcolor}`)
+
+    bookleft.append(title).append(author).append(pages)
+    bookright.append(label).append(input)
+    bookdiv.append(bookleft).append(bookright)
     $("#bookdisplay").append(bookdiv)
+
 }
 
 

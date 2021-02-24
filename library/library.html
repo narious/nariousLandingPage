@@ -59,12 +59,17 @@
         <button id="btnupdate" onclick="updateBooks()">Update</button>
         <ol id="bookList">
         </ol>
-        <div class="book">
-            <p  class="bookDetails bkTitleDisplay">Book title</p>
-            <p  class="bookDetails bkAuthDisplay">Author</p>
-            <p  class="bookDetails bkPageDisplay">Pages</p>
-            <label for="hasread" class="bookHasRead">read?</label>
-            <input type="checkbox" id="hasread" class="bookHasRead">
+            <div class="book">
+                <div class="column left">
+                <p  class="bookDetails bkTitleDisplay">Book title</p>
+                <p  class="bookDetails bkAuthDisplay">Author</p>
+                <p  class="bookDetails bkPageDisplay">Pages</p>
+            </div>
+            <div class="column right">
+                <label for="hasread" class="bookHasRead">read?</label>
+                <input type="checkbox" id="hasread" class="bookHasRead">
+            </div>
+
         </div>
 
         

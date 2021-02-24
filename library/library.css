@@ -22,7 +22,7 @@
 }
 
 .book {
-    height: 25px;
+    height: 70px;
     width: 500px;
     background-color: gainsboro;
     display: inline-block;
@@ -33,7 +33,6 @@
 
 
 .bookDetails {
-    float: left;
     margin-top: 5px;
     margin-left: 10px;
     font-size: 15px;
@@ -53,4 +52,25 @@
 #totalBooksCounter {
     position: relative;
     
+}
+
+p {
+    margin: 5px;
+}
+
+#bookdisplay p {
+    width: 75%;
+    margin: 3px;
+}
+
+.column {
+    float: left;
+}
+
+.column.left {
+    width: 75%;
+}
+
+.column.right {
+    width: 25%;
 }
