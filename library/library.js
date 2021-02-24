@@ -16,6 +16,10 @@ const book1 = new Book("Silence of the Lambs", "Thomas Harris", 162, true);
 var books = [book1];
 var num = [1,2,3,4,5]
 
+
+varbookStyles = ["monospace"]
+varbookColors = ["gainsboro", "skyblue", "snow", "tomato"]
+
 function addBook() {
     if  (!validateBookInput()) {
         // Do something
@@ -34,13 +38,15 @@ function addBook() {
         }
     }
     books.push(newbook)
+    updateBooks()
+    calcTotalBook()
 }
 
 function validateBookInput() {
     return true
 }
 
-function displayBooks() {
+function updateBooks() {
 
     // Refreshes the list by deleting the old one and creating a new one
     const oldlist = document.getElementById("bookList")
@@ -54,14 +60,40 @@ function displayBooks() {
         var line = document.createElement("li")
         line.innerText = info
         document.getElementById("bookList").appendChild(line)
+        createBookElement(element)
     });
+
 }
 
 function closePopup() {
     $("#popup").addClass("transparent")
+}
 
+function openAddBook() {
+    $("#popup").removeClass("transparent");
+}
+
+function createBookElement(book) {
+    var bookdiv = $("<div></div>").addClass("book")
+    var title = $("<p></p>").text(`${book.title}`).addClass("bookDetails bkTitleDisplay")
+    var author = $("<p></p>").text(` by ${book.author}.`).addClass("bookDetails bkAuthDisplay")
+    var pages = $("<p></p>").text(`pages: ${book.pages}`).addClass("bookDetails bkPageDisplay")
+    var label = $("<label></label>").text("read?").addClass("bookHasRead")
+    var label = $("<input></input>").addClass("bookHasRead")
+
+    bookdiv.append(title).append(author).append(pages).append(label).append(label)
+    $("#bookdisplay").append(bookdiv)
+}
+
+
+function calcTotalBook() {
+    $("#totalBooksCounter").text(books.length)
 }
 // Jquery
 $(document).ready(function() {
     $("#listTitle").html("Add Books");
 });
+
+
+// Function that run on load
+calcTotalBook()

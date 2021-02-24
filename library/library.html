@@ -1,82 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="library.css">
 </head>
+
 <body>
-    <div id="popup" class="">
-        <button id="popupx" onclick= closePopup()>x</button>
+    <div id="popup" class="transparent">
+        <h2 id="listTitle">Add Books</h2>
+        <button id="popupx" onclick=closePopup()>x</button>
         <form name="addBookForm" action="">
             <table>
                 <tr>
                     <td><label for="bookTitle">Book title:</label></td>
-                    <td><input type="text" id="bookTitle" name="bookTitle" placeholder="" value="The Dark Side Of The Mind"></td>
+                    <td><input type="text" id="bookTitle" name="bookTitle" placeholder=""
+                            value="The Dark Side Of The Mind"></td>
                 </tr>
-    
+
                 <tr>
                     <td><label for="author">Author:</label></td>
                     <td><input type="text" id="author" name="author" placeholder="" value="Kerry Daynes"></td>
                 </tr>
-                
+
                 <tr>
                     <td><label for="pages">Number of Pages:</label></td>
                     <td><input type="text" id="pages" name="pages" placeholder="" value="296"></td>
                 </tr>
-    
+
                 <tr>
                     <td><label for="readStatus">has been read?</label></td>
                     <td>
-                        <label for="">Yes</label>
-                        <input type="radio" id="readStatusYes" name="readStatus" >
-                        <label for="">No</label>
-                        <input type="radio" id="readStatusNo" name="readStatus" >
+                        <label for="readStatusYes">Yes</label>
+                        <input type="radio" id="readStatusYes" name="readStatus">
+                        <label for="readStatusNo">No</label>
+                        <input type="radio" id="readStatusNo" name="readStatus">
                     </td>
                 </tr>
-        </table>
-        <button type="button" id="btnsubmit" onclick="addBook(); closePopup()">Submit</button>
+            </table>
+            <button type="button" id="btnsubmit" onclick="addBook(); closePopup()">Submit</button>
 
         </form>
     </div>
     <h1>Library</h1>
-    <h2 id="listTitle">Add Books</h2>
-    <form name="addBookForm" action="">
-        <table>
-            <tr>
-                <td><label for="bookTitle">Book title:</label></td>
-                <td><input type="text" id="bookTitle" name="bookTitle" placeholder="" value="The Dark Side Of The Mind"></td>
-            </tr>
+    <div id="statistics">
+        <p>Total books:</p>
+        <p id="totalBooksCounter">0</p>
+    </div>
 
-            <tr>
-                <td><label for="author">Author:</label></td>
-                <td><input type="text" id="author" name="author" placeholder="" value="Kerry Daynes"></td>
-            </tr>
-            
-            <tr>
-                <td><label for="pages">Number of Pages:</label></td>
-                <td><input type="text" id="pages" name="pages" placeholder="" value="296"></td>
-            </tr>
 
-            <tr>
-                <td><label for="readStatus">has been read?</label></td>
-                <td>
-                    <label for="">Yes</label>
-                    <input type="radio" id="readStatusYes" name="readStatus" >
-                    <label for="">No</label>
-                    <input type="radio" id="readStatusNo" name="readStatus" >
-                </td>
-            </tr>
-    </table>
-    <button type="button" id="btnsubmit" onclick="addBook()">Submit</button>
-    </form>
+    <button type="button" id="openAddBook" onclick="openAddBook()">+</button>
     <hr>
-    <h2>Books</h2>
-    <button id="btnupdate" onclick="displayBooks()">Update</button>
-    <ol id="bookList">
-    </ol>
+
+    <section id="bookdisplay">
+        <h2>Books</h2>
+        <button id="btnupdate" onclick="updateBooks()">Update</button>
+        <ol id="bookList">
+        </ol>
+        <div class="book">
+            <p  class="bookDetails bkTitleDisplay">Book title</p>
+            <p  class="bookDetails bkAuthDisplay">Author</p>
+            <p  class="bookDetails bkPageDisplay">Pages</p>
+            <label for="hasread" class="bookHasRead">read?</label>
+            <input type="checkbox" id="hasread" class="bookHasRead">
+        </div>
+
+        
+        
+    </section>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="library.js"></script>
 </body>
+
 </html>
