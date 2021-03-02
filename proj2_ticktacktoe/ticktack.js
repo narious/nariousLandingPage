@@ -52,10 +52,12 @@ function checkWin(gameboard, playerNumber) {
 
 
 const playSound = (playerNumber) => {
-    const audio = playerNumber == 1 ? $("#player1Sound") : $("player2Sound");
+    const audio = playerNumber == 1 ? document.getElementById("player1Sound") : document.getElementById("player2Sound");
     audio.play()
-    console.log("sound played")
 }
 
 playSound(1)
+playSound(2)
 console.log(checkWin(gameboard, 1))
+
+
