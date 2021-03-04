@@ -56,6 +56,27 @@ const playSound = (playerNumber) => {
     audio.play()
 }
 
+function clickedBox() {
+    console.log("clicked")
+}
+
+// Get the element and iterate
+function updateCoordinate(element) {
+    var coordinate = element.getAttribute('id');
+    console.log(coordinate);
+  }
+  
+
+  var griditem = document.getElementsByClassName("grid-item");
+  
+  for (var i = 0; i < griditem.length; i++) {
+    griditem[i].addEventListener("onclick", function() {
+        updateCoordinate(this);
+    }, false);
+    griditem[i].addEventListener
+    console.log(griditem[i]);
+  }
+
 playSound(1)
 playSound(2)
 console.log(checkWin(gameboard, 1))
