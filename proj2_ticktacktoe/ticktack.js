@@ -62,23 +62,25 @@ function clickedBox() {
 
 // Get the element and iterate
 function updateCoordinate(element) {
-    var coordinate = element.getAttribute('id');
-    console.log(coordinate);
+    var parentdiv = element.parentNode;
+    const coordinate = parentdiv.getAttribute("id").split(",")
+    const x = parseInt(coordinate[0])
+    const y = parseInt(coordinate[1])
+    console.log(x, y)
   }
-  
 
-  var griditem = document.getElementsByClassName("grid-item");
-  
-  for (var i = 0; i < griditem.length; i++) {
-    griditem[i].addEventListener("onclick", function() {
-        updateCoordinate(this);
-    }, false);
-    griditem[i].addEventListener
-    console.log(griditem[i]);
-  }
+
+var gridbutton = document.getElementsByClassName("tiktacsquare");
+
+
+for (var i = 0; i < gridbutton.length; i++) {
+gridbutton[i].addEventListener("click", function() {
+    updateCoordinate(this);
+});
+console.log(gridbutton[i]);
+}
 
 playSound(1)
 playSound(2)
-console.log(checkWin(gameboard, 1))
 
 
