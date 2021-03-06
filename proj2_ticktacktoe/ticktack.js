@@ -1,7 +1,29 @@
 
-const gameboard = (() => {
+var gameboard = (() => {
     board =  [[0,0,0],[0,0,0],[0,0,0]]
-    return { board }
+    function isValidPos(x, y) {
+        return (board[x][y] == 0) 
+    }
+    return { board, isValidPos }
+})()
+
+var gamestate = (() => {
+    displayscreen = 0
+    playerturn = 1
+    function nextTurn() {
+        playerturn = 1 ? 2 : 1;
+    }
+    function updateBoard(x, y) {
+        if (gameboard.isValidPos(x, y)) {
+            gameboard.board[x][y] = playerturn
+            gamestate.nextTurn()
+            updateScreen()
+        }
+        else {
+            console.log("Position taken")
+        }
+    }
+    return {playerturn, displayscreen, updateBoard, nextTurn}
 })()
 
 const player = (name, playerNumber) => {
@@ -60,15 +82,33 @@ function clickedBox() {
     console.log("clicked")
 }
 
+function updateScreen() {
+
+    $("#turntext").html(`PLAYER ${gamestate.playerturn} TURN`);
+    for (let i = 0; i < gameboard.board.length; i++) {
+        for (let j = 0; j < gameboard.board[0].length; j++) {
+            const tiktacsquareid = `${i + 1},${j + 1}`
+            const tiktacsquare = document.getElementById(tiktacsquareid).childNodes[1]
+            const markclass = gameboard.board[i][j] == 0 ? null :  gameboard.board[i][j] == 1 ? "p1mark" : "p2mark";
+            console.log(gamestate.playerturn)
+            if (markclass != null) {
+                if (!tiktacsquare.classList.contains(markclass)) {
+                    tiktacsquare.classList.add(markclass)
+                }
+            }
+        }
+        
+    }
+}
 // Get the element and iterate
 function updateCoordinate(element) {
     var parentdiv = element.parentNode;
     const coordinate = parentdiv.getAttribute("id").split(",")
     const x = parseInt(coordinate[0])
     const y = parseInt(coordinate[1])
-    console.log(x, y)
+    gamestate.updateBoard(x-1, y-1)
+    console.log(gameboard.board)
   }
-
 
 var gridbutton = document.getElementsByClassName("tiktacsquare");
 
@@ -80,7 +120,5 @@ gridbutton[i].addEventListener("click", function() {
 console.log(gridbutton[i]);
 }
 
-playSound(1)
-playSound(2)
 
 

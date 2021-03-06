@@ -44,3 +44,11 @@ body {
     border: 0;
     outline:none;
   }
+
+  .p1mark {
+      background-color: slateblue;
+  }
+
+  .p2mark {
+      background-color:whitesmoke;
+  }
