@@ -14,8 +14,26 @@ body {
     height: 600px;
     margin-left: 33%;
     margin: 0 auto;
+    /* display: ruby; */
 }
 
+#winnertext {
+    position: absolute;
+    left: 45%;
+    top: 25%;
+    font-size: 50px;
+    font-family: cursive;
+    display: none;
+    
+}
+#mainscreen {
+    background-color: blanchedalmond;
+    width: 600px;
+    height: 600px;
+    margin-left: 33%;
+    margin: 0 auto;
+    display: none;
+}
 
 .grid-container {
     display: grid;
