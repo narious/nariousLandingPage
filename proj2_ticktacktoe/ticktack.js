@@ -10,6 +10,7 @@ var gameboard = (() => {
 
 var beginGame = (player1, player2) => {
     /*Explanation of the displayscreen 
+        Magic numbers!!
         0 = the main screen
         1 = the game screen
         2 = the afterwin screen */ 
@@ -26,6 +27,7 @@ var beginGame = (player1, player2) => {
             const didwin = checkWin(gameboard, this.playerturn)
             if (didwin) {
                 this.displayscreen = 2
+                console.log("we have a winner")
             } else {
                 gamestate.nextTurn()
             }
@@ -118,6 +120,28 @@ console.log(gridbutton[i]);
 
 /*VIEW  SECTION*/
 
+function disable(selector) {
+    $(selector).attr("pointer-events", "none");
+}
+
+function toggleDisplay(selector, bool) {
+    /**
+     * Toggles a display on or off depending on the bool value
+     * true for toggle on
+     * falase for toggle off
+     */
+    if (bool) {
+        if ($(selector).css("display") === "none") {
+            $(selector).css("display", "block");
+        }
+    } else {
+        if ($(selector).css("display") != "none") {
+            $(selector).css("display", "none");
+        }
+    }
+}
+
+
 function mainScreenWillAppear() {
 
 }
@@ -128,12 +152,13 @@ function gameScreenWillAppear() {
 
 function showWinner() {
     $("#winnertext").html(`${gamestate.players[gamestate.playerturn-1].name} \n Wins!`)
-    $("#winnertext").attr('display', 'block');
+    toggleDisplay("#winnertext", true)
 
 }
 
 function updateScreen() {
-    $("#turntext").html(`PLAYER ${gamestate.playerturn} TURN`);
+
+    // Updates the square
     for (let i = 0; i < gameboard.board.length; i++) {
         for (let j = 0; j < gameboard.board[0].length; j++) {
             const tiktacsquareid = `${i + 1},${j + 1}`
@@ -145,8 +170,15 @@ function updateScreen() {
                 }
             }
         }
-        
     }
+    // Chckes winner
+    if (gamestate.displayscreen == 2) {
+        disable("#board")
+        showWinner()
+        return
+    }
+
+    $("#turntext").html(`PLAYER ${gamestate.playerturn} TURN`);
 }
 
 
