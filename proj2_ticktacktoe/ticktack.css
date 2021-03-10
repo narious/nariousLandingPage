@@ -27,12 +27,16 @@ body {
     
 }
 #mainscreen {
+    position: absolute;
     background-color: blanchedalmond;
-    width: 600px;
-    height: 600px;
-    margin-left: 33%;
-    margin: 0 auto;
-    display: none;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    opacity: 0.9;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .grid-container {

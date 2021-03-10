@@ -8,7 +8,7 @@ var gameboard = (() => {
     return { board, isValidPos }
 })()
 
-var beginGame = (player1, player2) => {
+var beginGameState = (player1, player2) => {
     /*Explanation of the displayscreen 
         Magic numbers!!
         0 = the main screen
@@ -17,6 +17,7 @@ var beginGame = (player1, player2) => {
     displayscreen = 0
     players = [player1, player2]
     playerturn = 1
+    isAIMode = false
 
     function nextTurn() {
         this.playerturn = this.playerturn == 1 ? 2 : 1;
@@ -37,19 +38,32 @@ var beginGame = (player1, player2) => {
             console.log("Position taken")
         }
     }
-    return {playerturn, displayscreen, updateBoard, nextTurn, players}
+    return {playerturn, displayscreen, updateBoard, nextTurn, players, isAIMode}
 }
 
 const player = (name, playerNumber) => {
     return {name, playerNumber}
 }
 
-const player1 = player("Elf", 1)
-const player2= player("Alice", 2)
+// const player1 = player("Elf", 1)
+// const player2= player("Alice", 2)
 
-var gamestate = beginGame(player1, player2)
+// var gamestate = beginGameState(player1, player2)
 
 /*CONTROLLER SECTION*/
+
+function setUpGame() {
+    const player1 = player("Elf", 1)
+    const player2= player("Alice", 2)
+    return beginGameState(player1, player2)
+  }
+
+  function checkInputs() {
+    var p1name = $("#p1name").val();
+    var p2name = $("#p2name").val();
+    console.log(p2name == "")
+    return true
+  }
 
 function checkWin(gameboard, playerNumber) {
     var board = gameboard.board
@@ -118,6 +132,15 @@ gridbutton[i].addEventListener("click", function() {
 console.log(gridbutton[i]);
 }
 
+
+/**SECTION FOR AI MODE */
+function aiMove(gameboard, gamestate) {
+    x = 0;
+    y = 0;
+    // Write some logic here
+    return x, y
+}
+
 /*VIEW  SECTION*/
 
 function disable(selector) {
@@ -184,5 +207,6 @@ function updateScreen() {
 
 console.log("okay")
 
+/** This part of the code runs the game */
 
-
+gamestate = setUpGame()
