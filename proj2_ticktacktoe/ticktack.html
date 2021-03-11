@@ -13,14 +13,14 @@
         <div id="mainscreen">
             <h4>Enter details</h4>
             <label for="p1name">Player 1 Name:</label>
-            <input  id = "p1name" type="text" value="elf">
+            <input  id = "p1name" type="text" value="Elf">
             <br>
             <label for="p2name">Player 2 Name:</label>
             <input  id = "p2name" type="text">
             <br>
             <br>
-            <button id="start2PBut" onclick="checkInputs()">Start Two Player Mode!</button>
-            <button id="start1PBut" onclick="checkInputs()">Start Single Player Mode!</button>
+            <button id="start2PBut" onclick="setUpGame(2)">Start Two Player Mode!</button>
+            <button id="start1PBut" onclick="setUpGame(1)">Start Single Player Mode!</button>
         </div>
         <h4 id="winnertext" >P</h4>
         <div class="grid-container" id="board">

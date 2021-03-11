@@ -1,5 +1,11 @@
 
 /*MODEL SECTION*/
+
+class Constants {
+    static get boardId() { return "#board"}
+    static get mainscreenId() { return "#mainscreen"} 
+}
+
 var gameboard = (() => {
     board =  [[0,0,0],[0,0,0],[0,0,0]]
     function isValidPos(x, y) {
@@ -51,19 +57,50 @@ const player = (name, playerNumber) => {
 // var gamestate = beginGameState(player1, player2)
 
 /*CONTROLLER SECTION*/
+// Creates a global variable later to be updated
+var gamestate; 
 
-function setUpGame() {
-    const player1 = player("Elf", 1)
-    const player2= player("Alice", 2)
-    return beginGameState(player1, player2)
+function setUpGame(mode) {
+    /**
+     * Mode can be single or multiplayer
+     * @param mode int (1 or 2)
+     * 
+     */
+    if (mode == 2) {
+        if (checkInputs(2)) {
+            var p1name = $("#p1name").val();
+            var p2name = $("#p2name").val();
+        } else {
+            var p1name = "Elf";
+            var p2name = "Orc";
+        }
+        const player1 = player(p1name, 1)
+        const player2= player(p2name, 2)
+        var newgamestate = beginGameState(player1, player2)
+      }
+      // Single player mode 
+      else {
+          console.log("Single player not implemented yet..")
+          return
+      }
+    console.log("setting up new game state...")
+    console.log(newgamestate)
+    gamestate = newgamestate;
+    toggleDisplay("#mainscreen", false)
+    togglePointerEvents("#board", true)
+    updateScreen()
   }
 
-  function checkInputs() {
+function checkInputs(mode) {
     var p1name = $("#p1name").val();
     var p2name = $("#p2name").val();
-    console.log(p2name == "")
-    return true
+    if (mode == 2) {
+        return (p1name != "" && p2name != "")
+    } else {
+        return (p1name != "")
+    }
   }
+
 
 function checkWin(gameboard, playerNumber) {
     var board = gameboard.board
@@ -122,15 +159,14 @@ function updateCoordinate(element) {
     console.log(gameboard.board)
   }
 
-var gridbutton = document.getElementsByClassName("tiktacsquare");
-
-
-for (var i = 0; i < gridbutton.length; i++) {
-gridbutton[i].addEventListener("click", function() {
-    updateCoordinate(this);
-});
-console.log(gridbutton[i]);
-}
+  function setUpgridButton(){
+    var gridbutton = document.getElementsByClassName("tiktacsquare");
+    for (var i = 0; i < gridbutton.length; i++) {
+    gridbutton[i].addEventListener("click", function() {
+        updateCoordinate(this);
+    });
+    }
+  }
 
 
 /**SECTION FOR AI MODE */
@@ -143,7 +179,12 @@ function aiMove(gameboard, gamestate) {
 
 /*VIEW  SECTION*/
 
-function disable(selector) {
+function togglePointerEvents(selector, bool) {
+    if (bool) {
+        $(selector).attr("pointer-events", "auto");
+        return
+    }
+
     $(selector).attr("pointer-events", "none");
 }
 
@@ -196,17 +237,20 @@ function updateScreen() {
     }
     // Chckes winner
     if (gamestate.displayscreen == 2) {
-        disable("#board")
+        togglePointerEvents(Constants.boardId, false)
         showWinner()
         return
     }
 
-    $("#turntext").html(`PLAYER ${gamestate.playerturn} TURN`);
+    $("#turntext").html(`${gamestate.players[gamestate.playerturn-1].name} TURN`);
 }
 
 
-console.log("okay")
+console.log("compiled")
 
-/** This part of the code runs the game */
 
-gamestate = setUpGame()
+/**
+ * The running the code part in the background
+ */
+setUpgridButton()
+togglePointerEvents(Constants.boardId, false)

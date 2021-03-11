@@ -4,7 +4,7 @@ body {
 
 #gamescreen {
     background-color:yellow;
-    margin: 0 20% 0 20%;
+    margin: 0% 20% 0 20%;
     height: 800px;
 }
 
@@ -31,10 +31,10 @@ body {
     background-color: blanchedalmond;
     width: 500px;
     height: 500px;
-    margin: auto;
+    margin: 0;
     opacity: 0.9;
-    top: 0;
-    left: 0;
+    top: 10%;
+    left: 40.2%;
     right: 0;
     bottom: 0;
 }
